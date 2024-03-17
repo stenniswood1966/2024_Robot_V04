@@ -1,0 +1,87 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.33,
+      "y": 1.17
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Red P-1a"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Auto Align Shoot"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake and Load"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Red 1a-1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Auto Align Shoot"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake and Load"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Red 1-4"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Red 4-1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Auto Align Shoot"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Red",
+  "choreoAuto": false
+}
