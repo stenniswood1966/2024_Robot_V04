@@ -56,7 +56,7 @@
       }
     }
   },
-  "NetworkTables Info": {
-    "visible": true
+  "NetworkTables View": {
+    "visible": false
   }
 }

@@ -2,22 +2,16 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.56,
-      "y": 4.09
+      "x": 1.37,
+      "y": 5.5
     },
-    "rotation": 0.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "path",
-          "data": {
-            "pathName": "P - P3a"
-          }
-        },
-        {
           "type": "named",
           "data": {
             "name": "Auto Align Shoot"
@@ -28,15 +22,15 @@
           "data": {
             "commands": [
               {
-                "type": "path",
-                "data": {
-                  "pathName": "P3a-P3"
-                }
-              },
-              {
                 "type": "named",
                 "data": {
                   "name": "Intake and Load"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "P - 2"
                 }
               }
             ]
@@ -53,15 +47,15 @@
           "data": {
             "commands": [
               {
-                "type": "path",
-                "data": {
-                  "pathName": "P3 - P2"
-                }
-              },
-              {
                 "type": "named",
                 "data": {
                   "name": "Intake and Load"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "2-3"
                 }
               }
             ]
@@ -78,15 +72,15 @@
           "data": {
             "commands": [
               {
-                "type": "path",
-                "data": {
-                  "pathName": "P2 - P1"
-                }
-              },
-              {
                 "type": "named",
                 "data": {
                   "name": "Intake and Load"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3-1"
                 }
               }
             ]
@@ -101,6 +95,6 @@
       ]
     }
   },
-  "folder": null,
+  "folder": "Blue",
   "choreoAuto": false
 }
