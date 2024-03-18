@@ -10,6 +10,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 public class Constants {
 
     public static Rotation2d k_steering_target = new Rotation2d(Math.toRadians(0)); //used by AutoAlignCommand to rotate to target
+    public static double k_drive_target = 0; //used in AutoAlignCommand2. The m/sec to drive towards or away from speaker to align
     public static final double k_MMRange = .005; //this is the range MM is considered finished
 
     public static boolean k_NoteisReady = false;
@@ -38,6 +39,7 @@ public class Constants {
     public static double k_LLDistanceToAprilTag = 0.0;
     public static double k_FiringSolutionSpeed = k_ShootDefaultSpeed; //set the initial values
     public static double k_FiringSolutionAngle = k_WristShootPosition; //set the initial values
+    
 
 
     
