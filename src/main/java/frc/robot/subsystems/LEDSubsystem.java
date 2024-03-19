@@ -55,7 +55,7 @@ public class LEDSubsystem extends SubsystemBase {
     }
 
     public void startup() {
-        m_candle.setLEDs(255, 255, 0, 0, 0, 70);
+        m_candle.setLEDs(255, 255, 0, 0, 0, LedCount);
     }
 
 }
