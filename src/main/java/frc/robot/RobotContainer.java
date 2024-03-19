@@ -8,6 +8,7 @@ import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.ctre.phoenix6.mechanisms.swerve.utility.PhoenixPIDController;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.FollowPathCommand;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.XboxController;
@@ -258,6 +259,8 @@ public class RobotContainer {
     //pathplanner sendablechooser
     autochooser = AutoBuilder.buildAutoChooser("None");
     SmartDashboard.putData("Auto Chooser", autochooser);
+
+    FollowPathCommand.warmupCommand().schedule();
   }
 
   public Command getAutonomousCommand() {
