@@ -21,6 +21,9 @@ public class AutoShoot_A extends Command {
     RobotContainer.shootsubsystem.Shoot(Constants.k_FiringSolutionSpeed);
     RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
     RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_FiringSolutionAngle);
+    System.out.println("Shoot Speed: " + Constants.k_FiringSolutionSpeed);
+    System.out.println("Shoot Angle: " + Constants.k_FiringSolutionAngle);
+    System.out.println("Shoot Distance: " + Constants.k_LLDistanceToAprilTag);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
