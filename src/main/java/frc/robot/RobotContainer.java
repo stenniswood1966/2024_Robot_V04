@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.led.LarsonAnimation.BounceMode;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.ctre.phoenix6.mechanisms.swerve.utility.PhoenixPIDController;
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -11,6 +12,7 @@ import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.FollowPathCommand;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -52,7 +54,7 @@ public class RobotContainer {
   private double MinSpeed = TunerConstants.kSpeedAt12VoltsMps / 2; // min speed used during go slow
   private double VerySlowSpeed = 1.5; // min speed used during go very slow
   private double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
-  private double POVSpeed = TunerConstants.kSpeedAt12VoltsMps / 6; //min speed used with POV buttons
+  private double POVSpeed = TunerConstants.kSpeedAt12VoltsMps / 8; //min speed used with POV buttons
 
   //subsystems used
   public static ShoulderSubsystem shouldersubsystem = new ShoulderSubsystem();
@@ -175,11 +177,11 @@ public class RobotContainer {
 
     //POV buttons slow mode auto rotate to zero
     fieldcentricfacingangle.HeadingController = new PhoenixPIDController(10.0, 0, 0); //this is probably too aggressive if you are very far from the target
-    Rotation2d alignangle = Rotation2d.fromDegrees(0); //sets the angle the robot should face to zero
-    joystick.pov(0).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(POVSpeed).withVelocityY(0).withTargetDirection(alignangle)));
-    joystick.pov(180).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(-POVSpeed).withVelocityY(0).withTargetDirection(alignangle)));
-    joystick.pov(90).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(-POVSpeed).withTargetDirection(alignangle)));
-    joystick.pov(270).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(POVSpeed).withTargetDirection(alignangle)));
+    //Rotation2d alignangle = Rotation2d.fromDegrees(90); //sets the angle the robot should face to zero
+    joystick.pov(0).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(POVSpeed).withVelocityY(0).withTargetDirection(isAllianceRed())));
+    joystick.pov(180).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(-POVSpeed).withVelocityY(0).withTargetDirection(isAllianceRed())));
+    joystick.pov(90).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(-POVSpeed).withTargetDirection(isAllianceRed())));
+    joystick.pov(270).whileTrue(drivetrain.applyRequest(()->fieldcentricfacingangle.withVelocityX(0.0).withVelocityY(POVSpeed).withTargetDirection(isAllianceRed())));
 
 
   //assign operator controls - Xk-80 HID Port 1
@@ -267,5 +269,14 @@ public class RobotContainer {
     /* First put the drivetrain into auto run mode, then run the auto */
     //return runAuto;
     return autochooser.getSelected();
+  }
+
+  public Rotation2d isAllianceRed() {
+    var alliance = DriverStation.getAlliance();
+    if (alliance.get() == DriverStation.Alliance.Red) {
+      return Rotation2d.fromDegrees(90);
+    } else {
+    return Rotation2d.fromDegrees(270);
+    }
   }
 }
