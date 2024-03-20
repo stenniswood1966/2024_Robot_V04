@@ -54,18 +54,18 @@ public class WristSubsystem extends SubsystemBase {
 
     /* Configure current limits */
     MotionMagicConfigs mm = new MotionMagicConfigs(); //creates a default motion magic congiguration
-    mm.MotionMagicCruiseVelocity = 110; // RotorVelocity per second
-    mm.MotionMagicAcceleration = 110; // Take approximately 0.5 seconds to reach max vel Take approximately 0.2 seconds to reach max accel
-    mm.MotionMagicJerk = 0; //smooths out the transition from start/stop to cruise velocity
+    mm.MotionMagicCruiseVelocity = 150; // RotorVelocity per second
+    mm.MotionMagicAcceleration = 150; // Take approximately 0.5 seconds to reach max vel Take approximately 0.2 seconds to reach max accel
+    mm.MotionMagicJerk = 1000; //smooths out the transition from start/stop to cruise velocity
     fx_cfg.MotionMagic = mm;
 
     Slot0Configs slot0 = new Slot0Configs();
-    slot0.kP = 100; //output per unit of error in velocity (output/rps)
+    slot0.kP = 200; //output per unit of error in velocity (output/rps)
     slot0.kI = 0.0; //output per unit of integrated error in velocity (output/rotation)
     slot0.kD = 0.0; //output per unit of error derivative in velocity (output/(rps/s))
-    slot0.kA = 0.2; // An acceleration of 1 rps/s requires 0.01 V output
-    slot0.kV = 0.2; //output per unit of requested velocity (output/rps)
-    slot0.kS = 0.2; //output to overcome static friction (output)
+    slot0.kA = 0.0; // An acceleration of 1 rps/s requires 0.01 V output
+    slot0.kV = 0.0; //output per unit of requested velocity (output/rps)
+    slot0.kS = 0.0; //output to overcome static friction (output)
     slot0.GravityType = GravityTypeValue.Arm_Cosine;
     fx_cfg.Slot0 = slot0; //adds the slot0 config to the motors configuration file
 
