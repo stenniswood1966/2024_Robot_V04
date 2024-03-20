@@ -18,6 +18,12 @@ public class AutoShoot_A extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+
+  }
+
+  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void execute() {
     RobotContainer.shootsubsystem.Shoot(Constants.k_FiringSolutionSpeed);
     RobotContainer.shouldersubsystem.enablemotionmagic(Constants.k_ShoulderShootPosition);
     RobotContainer.wristsubsystem.enablemotionmagic(Constants.k_FiringSolutionAngle);
@@ -25,10 +31,6 @@ public class AutoShoot_A extends Command {
     System.out.println("Shoot Angle: " + Constants.k_FiringSolutionAngle);
     System.out.println("Shoot Distance: " + Constants.k_LLDistanceToAprilTag);
   }
-
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
