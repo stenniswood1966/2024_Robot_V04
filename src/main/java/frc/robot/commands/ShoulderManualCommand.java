@@ -21,8 +21,8 @@ public class ShoulderManualCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double speed = RobotContainer.joystick2.getRawAxis(1) * .3; //slow speed down by 70%
-    RobotContainer.shouldersubsystem.set(speed);
+    //double speed = RobotContainer.joystick2.getRawAxis(1) * .3; //slow speed down by 70%
+    //RobotContainer.shouldersubsystem.set(speed);
   }
 
   // Called once the command ends or is interrupted.

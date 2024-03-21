@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4573139278437146,
-      "y": 2.6776949882827807
+      "x": 1.35,
+      "y": 4.71
     },
     "rotation": 0
   },
@@ -12,28 +12,9 @@
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "Auto Align Shoot"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake and Load"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Red P-2"
-                }
-              }
-            ]
+            "pathName": "Red P-8a"
           }
         },
         {
@@ -47,18 +28,30 @@
           "data": {
             "commands": [
               {
+                "type": "path",
+                "data": {
+                  "pathName": "Red 8a-8"
+                }
+              },
+              {
                 "type": "named",
                 "data": {
                   "name": "Intake and Load"
                 }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Red 2-3"
-                }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Auto Align Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Red 8-7a"
           }
         },
         {
@@ -72,43 +65,30 @@
           "data": {
             "commands": [
               {
+                "type": "path",
+                "data": {
+                  "pathName": "Red 7a-7"
+                }
+              },
+              {
                 "type": "named",
                 "data": {
                   "name": "Intake and Load"
                 }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Red 3-1"
-                }
               }
             ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Red 7-7b"
           }
         },
         {
           "type": "named",
           "data": {
             "name": "Auto Align Shoot"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake and Load"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Red 1-4"
-                }
-              }
-            ]
           }
         }
       ]
