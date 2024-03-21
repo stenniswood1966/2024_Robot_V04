@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.35,
-      "y": 3.58
+      "x": 1.36,
+      "y": 3.66
     },
-    "rotation": 0
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "P-8a"
+            "pathName": "P - P3a"
           }
         },
         {
@@ -30,7 +30,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "8a-8"
+                  "pathName": "P - 8"
                 }
               },
               {
@@ -45,7 +45,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "8-7a"
+            "pathName": "8 - P"
           }
         },
         {
@@ -59,15 +59,15 @@
           "data": {
             "commands": [
               {
-                "type": "path",
-                "data": {
-                  "pathName": "7a-7"
-                }
-              },
-              {
                 "type": "named",
                 "data": {
                   "name": "Intake and Load"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "P - 7"
                 }
               }
             ]
@@ -76,7 +76,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "7-7b"
+            "pathName": "7 - P3a"
           }
         },
         {
