@@ -19,7 +19,7 @@ public class Constants {
 
     //Shoulder MM postions
     public static boolean k_ShoulderMMisMoving = false;
-    public static final double k_ShoulderHomePosition = 2;
+    public static final double k_ShoulderHomePosition = 1;
     public static final double k_ShoulderShootPosition = 11; //default shooting position
     public static final double k_ShoulderAmpPosition = 46.775;
 
