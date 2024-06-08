@@ -25,6 +25,7 @@ import frc.robot.commands.AmpFeedCommand;
 import frc.robot.commands.AmpShootCommand;
 import frc.robot.commands.AutoAlignCommand;
 import frc.robot.commands.AutoShoot_A;
+import frc.robot.commands.AutoShoot_ACenter;
 import frc.robot.commands.AutoShoot_B;
 import frc.robot.commands.AutoShoot_C;
 import frc.robot.commands.ClimbDownCommand;
@@ -92,6 +93,7 @@ public class RobotContainer {
   private JoystickButton Button_10 = new JoystickButton(m_operator1Controller, 10);
   private JoystickButton Button_12 = new JoystickButton(m_operator1Controller, 12);
   private JoystickButton Button_13 = new JoystickButton(m_operator1Controller, 13);
+  private JoystickButton Button_15 = new JoystickButton(m_operator1Controller, 15);
   private JoystickButton Button_17 = new JoystickButton(m_operator1Controller, 17);
   private JoystickButton Button_18 = new JoystickButton(m_operator1Controller, 18);
   private JoystickButton Button_19 = new JoystickButton(m_operator1Controller, 19);
@@ -216,6 +218,9 @@ public class RobotContainer {
     Button_12.whileTrue(new ClimbUpCommand());
 
     Button_13.whileTrue(new ClimbDownCommand());
+
+    Button_15.onTrue( //amp shoot position
+      new AutoShoot_ACenter().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
 
     Button_17.onTrue(Commands.runOnce(WristSubsystem::addWristModifier, wristsubsystem).ignoringDisable(true));
 
