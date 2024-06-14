@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.led.LarsonAnimation.BounceMode;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.ctre.phoenix6.mechanisms.swerve.utility.PhoenixPIDController;
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -25,7 +24,8 @@ import frc.robot.commands.AmpFeedCommand;
 import frc.robot.commands.AmpShootCommand;
 import frc.robot.commands.AutoAlignCommand;
 import frc.robot.commands.AutoShoot_A;
-import frc.robot.commands.AutoShoot_ACenter;
+import frc.robot.commands.AutoShoot_APass;
+import frc.robot.commands.AutoShoot_APass2;
 import frc.robot.commands.AutoShoot_B;
 import frc.robot.commands.AutoShoot_C;
 import frc.robot.commands.ClimbDownCommand;
@@ -94,6 +94,7 @@ public class RobotContainer {
   private JoystickButton Button_12 = new JoystickButton(m_operator1Controller, 12);
   private JoystickButton Button_13 = new JoystickButton(m_operator1Controller, 13);
   private JoystickButton Button_15 = new JoystickButton(m_operator1Controller, 15);
+  private JoystickButton Button_16 = new JoystickButton(m_operator1Controller, 16);
   private JoystickButton Button_17 = new JoystickButton(m_operator1Controller, 17);
   private JoystickButton Button_18 = new JoystickButton(m_operator1Controller, 18);
   private JoystickButton Button_19 = new JoystickButton(m_operator1Controller, 19);
@@ -155,11 +156,11 @@ public class RobotContainer {
                                         .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
                                         ).ignoringDisable(true));
 
-    //Go very very Slow mode
-    joystick.rightBumper().whileTrue(drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * VerySlowSpeed) // Drive forward with negative Y (forward) / 2
-                                        .withVelocityY(-joystick.getLeftX() * VerySlowSpeed) // Drive left with negative X (left) / 2
-                                        .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
-                                        ).ignoringDisable(true));
+    //Passing 1/2 court
+    //joystick.rightBumper().onTrue( //amp shoot position
+    //  new AutoShoot_APass2().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
+
+    joystick.rightBumper().onTrue(new AutoShoot_APass2()).onFalse(new AutoShoot_B().andThen(new AutoShoot_C()));
 
     //AutoAlign to apriltag
     //fieldcentricfacingangle.HeadingController can be found in the POV button section
@@ -220,7 +221,10 @@ public class RobotContainer {
     Button_13.whileTrue(new ClimbDownCommand());
 
     Button_15.onTrue( //amp shoot position
-      new AutoShoot_ACenter().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
+      new AutoShoot_APass().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
+
+    Button_16.onTrue( //amp shoot position
+      new AutoShoot_APass2().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
 
     Button_17.onTrue(Commands.runOnce(WristSubsystem::addWristModifier, wristsubsystem).ignoringDisable(true));
 
