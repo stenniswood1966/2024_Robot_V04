@@ -220,11 +220,9 @@ public class RobotContainer {
 
     Button_13.whileTrue(new ClimbDownCommand());
 
-    Button_15.onTrue( //amp shoot position
-      new AutoShoot_APass().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
+    Button_15.onTrue(new AutoShoot_APass()).onFalse(new AutoShoot_B().andThen(new AutoShoot_C()));
 
-    Button_16.onTrue( //amp shoot position
-      new AutoShoot_APass2().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
+    Button_16.onTrue(new AutoShoot_APass2()).onFalse(new AutoShoot_B().andThen(new AutoShoot_C()));
 
     Button_17.onTrue(Commands.runOnce(WristSubsystem::addWristModifier, wristsubsystem).ignoringDisable(true));
 
