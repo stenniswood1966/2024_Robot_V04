@@ -54,7 +54,7 @@ public class RobotContainer {
   private double MaxSpeed = TunerConstants.kSpeedAt12VoltsMps; // kSpeedAt12VoltsMps desired top speed
   private double MinSpeed = TunerConstants.kSpeedAt12VoltsMps / 2; // min speed used during go slow
   private double VerySlowSpeed = 1.5; // min speed used during go very slow
-  private double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
+  private double MaxAngularRate = 2 * Math.PI; //1.5 = 3/4 of a rotation per second max angular velocity
   private double POVSpeed = TunerConstants.kSpeedAt12VoltsMps / 8; //min speed used with POV buttons
 
   //subsystems used
@@ -166,9 +166,8 @@ public class RobotContainer {
     //fieldcentricfacingangle.HeadingController can be found in the POV button section
     joystick.rightStick().whileTrue(drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(-joystick.getLeftY() * MaxSpeed)
                                         .withVelocityY(-joystick.getLeftX() * MaxSpeed)
-                                        .withTargetDirection(Constants.k_steering_target) //this would be the angle to line up with
-                                        ).ignoringDisable(true))
-                                        .whileTrue(new AutoAlignCommand(drivetrain).repeatedly());
+                                        .withTargetDirection(isAllianceRed2()) //this would be the angle to line up with
+                                        ).ignoringDisable(true));
 
     // reset the field-centric heading on left bumper press
     joystick.start().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
@@ -284,6 +283,15 @@ public class RobotContainer {
       return Rotation2d.fromDegrees(90);
     } else {
     return Rotation2d.fromDegrees(270);
+    }
+  }
+
+    public Rotation2d isAllianceRed2() {
+    var alliance = DriverStation.getAlliance();
+    if (alliance.get() == DriverStation.Alliance.Red) {
+      return Rotation2d.fromDegrees(35);
+    } else {
+    return Rotation2d.fromDegrees(325);
     }
   }
 }

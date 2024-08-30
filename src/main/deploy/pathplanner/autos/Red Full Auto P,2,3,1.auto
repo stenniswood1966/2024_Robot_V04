@@ -91,25 +91,6 @@
           "data": {
             "name": "Auto Align Shoot"
           }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake and Load"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Red 1-4"
-                }
-              }
-            ]
-          }
         }
       ]
     }
