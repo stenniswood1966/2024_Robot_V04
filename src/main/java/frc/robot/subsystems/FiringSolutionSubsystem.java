@@ -45,7 +45,7 @@ public class FiringSolutionSubsystem extends SubsystemBase {
     shooterSpeeds.put(999.0, (double) 65);
   }
 
-    private void setUpWristLookUpTable() {
+    private void setUpWristLookUpTable() { //the lower the number the higher the note's path. the higher number the lowers the note's path
     wristAngle.put(0.0, (double) 0.348);
     wristAngle.put(30.0, (double) 0.348);
     wristAngle.put(35.0, (double) 0.348);
@@ -54,18 +54,18 @@ public class FiringSolutionSubsystem extends SubsystemBase {
     wristAngle.put(50.0, (double) 0.367);
     wristAngle.put(55.0, (double) 0.373);
     wristAngle.put(60.0, (double) 0.373);
-    wristAngle.put(64.0, (double) 0.392);
-    wristAngle.put(65.0, (double) 0.380);
-    wristAngle.put(67.0, (double) 0.385);
-    wristAngle.put(70.0, (double) 0.382);
-    wristAngle.put(75.0, (double) 0.400);
+    wristAngle.put(64.0, (double) 0.376);
+    wristAngle.put(65.0, (double) 0.379);
+    wristAngle.put(67.0, (double) 0.381);
+    wristAngle.put(70.0, (double) 0.383);
+    wristAngle.put(75.0, (double) 0.386);
     wristAngle.put(80.0, (double) 0.398);
     wristAngle.put(85.0, (double) 0.406);
     wristAngle.put(90.0, (double) 0.414);
     wristAngle.put(95.0, (double) 0.417);
     wristAngle.put(100.0, (double) 0.418);
     wristAngle.put(105.00, (double) 0.420);
-    wristAngle.put(110.00, (double) 0.417);
+    wristAngle.put(110.00, (double) 0.420);
     wristAngle.put(115.00, (double) 0.421);
     wristAngle.put(120.00, (double) 0.423);
     wristAngle.put(125.00, (double) 0.424);
