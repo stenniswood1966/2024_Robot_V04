@@ -289,9 +289,9 @@ public class RobotContainer {
     public Rotation2d isAllianceRed2() {
     var alliance = DriverStation.getAlliance();
     if (alliance.get() == DriverStation.Alliance.Red) {
-      return Rotation2d.fromDegrees(35);
+      return Rotation2d.fromDegrees(30);
     } else {
-    return Rotation2d.fromDegrees(325);
+    return Rotation2d.fromDegrees(330);
     }
   }
 }
