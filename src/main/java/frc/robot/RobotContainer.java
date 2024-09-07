@@ -258,6 +258,14 @@ public class RobotContainer {
                                         .andThen(new AutoShoot_B())
                                         .andThen(new AutoShoot_C())
                                         );
+    NamedCommands.registerCommand("Auto Align Dump", (drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(0 * MaxSpeed)
+                                        .withVelocityY(0 * MaxSpeed)
+                                        .withTargetDirection(isAllianceRed2()) //this would be the angle to line up with
+                                        ).ignoringDisable(true)).withTimeout(0.250)
+                                        .andThen(new AutoShoot_APass())
+                                        .andThen(new AutoShoot_B())
+                                        .andThen(new AutoShoot_C())
+                                        );
   }
 
   public RobotContainer() {
