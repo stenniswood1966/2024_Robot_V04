@@ -160,10 +160,10 @@ public class RobotContainer {
     //joystick.rightBumper().onTrue( //amp shoot position
     //  new AutoShoot_APass2().andThen(new AutoShoot_B()).andThen(new AutoShoot_C()));
 
-    joystick.rightBumper().onTrue(new AutoShoot_APass2()).onFalse(new AutoShoot_B().andThen(new AutoShoot_C()));
+    joystick.rightBumper().onTrue(new AutoShoot_APass2()).onFalse(new AutoShoot_B().andThen(new AutoShoot_C())); //thru the air pass
+    joystick.rightTrigger().onTrue(new AutoShoot_APass()).onFalse(new AutoShoot_B().andThen(new AutoShoot_C())); //skip pass
 
-    //AutoAlign to apriltag
-    //fieldcentricfacingangle.HeadingController can be found in the POV button section
+    //AutoAlign to pass note
     joystick.rightStick().whileTrue(drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(-joystick.getLeftY() * MaxSpeed)
                                         .withVelocityY(-joystick.getLeftX() * MaxSpeed)
                                         .withTargetDirection(isAllianceRed2()) //this would be the angle to line up with
@@ -266,6 +266,12 @@ public class RobotContainer {
                                         .andThen(new AutoShoot_B())
                                         .andThen(new AutoShoot_C())
                                         );
+    NamedCommands.registerCommand("Shooter Prep",new AutoShoot_APass());
+    NamedCommands.registerCommand("Shooter Align", (drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(0 * MaxSpeed)
+                                        .withVelocityY(0 * MaxSpeed)
+                                        .withTargetDirection(isAllianceRed2()) //this would be the angle to line up with
+                                        ).ignoringDisable(true)).withTimeout(0.250));
+    NamedCommands.registerCommand("Shooter Pass", new AutoShoot_B().andThen(new AutoShoot_C()));
   }
 
   public RobotContainer() {
