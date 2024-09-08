@@ -155,6 +155,50 @@
               }
             ]
           }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shooter Prep"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Red 7b-6"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "sequential",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shooter Align"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Shooter Pass"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 0.5
+                }
+              }
+            ]
+          }
         }
       ]
     }

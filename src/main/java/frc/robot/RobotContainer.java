@@ -137,13 +137,13 @@ public class RobotContainer {
                                         .andThen(new AutoShoot_C())
                                         );
     */
-    joystick.y().onTrue(drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(-joystick.getLeftY() * MaxSpeed)
+    joystick.y().whileTrue(drivetrain.applyRequest(() -> fieldcentricfacingangle.withVelocityX(-joystick.getLeftY() * MaxSpeed)
                                         .withVelocityY(-joystick.getLeftX() * MaxSpeed)
                                         .withTargetDirection(Constants.k_steering_target) //this would be the angle to line up with
                                         ).ignoringDisable(true))
-                                        .onTrue(new AutoAlignCommand(drivetrain).repeatedly().withTimeout(0.250)
-                                        .alongWith(new AutoShoot_A()))
-                                        .onFalse(new AutoShoot_B()
+                                        .whileTrue(new AutoAlignCommand(drivetrain).repeatedly().withTimeout(0.250)
+                                        .alongWith(new AutoShoot_A())
+                                        .andThen(new AutoShoot_B())
                                         .andThen(new AutoShoot_C())
                                         );
 
@@ -316,6 +316,15 @@ public class RobotContainer {
       return Rotation2d.fromDegrees(30);
     } else {
     return Rotation2d.fromDegrees(330);
+    }
+  }
+
+      public Rotation2d isAllianceRed3() {
+    var alliance = DriverStation.getAlliance();
+    if (alliance.get() == DriverStation.Alliance.Red) {
+      return Rotation2d.fromDegrees(90);
+    } else {
+    return Rotation2d.fromDegrees(270);
     }
   }
 }
