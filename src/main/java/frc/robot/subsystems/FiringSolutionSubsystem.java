@@ -59,7 +59,7 @@ public class FiringSolutionSubsystem extends SubsystemBase {
     wristAngle.put(67.0, (double) 0.384);
     wristAngle.put(70.0, (double) 0.388);
     wristAngle.put(75.0, (double) 0.392);
-    wristAngle.put(80.0, (double) 0.398);
+    wristAngle.put(80.0, (double) 0.396);
     wristAngle.put(85.0, (double) 0.398);
     wristAngle.put(90.0, (double) 0.400);
     wristAngle.put(95.0, (double) 0.406);
